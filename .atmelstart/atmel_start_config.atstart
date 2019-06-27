@@ -1,0 +1,235 @@
+format_version: '2'
+name: My Project
+versions:
+  api: '1.0'
+  backend: 1.5.122
+  commit: 820baecf7dd115d94b0d42ee3b0b9d6ba2da7113
+  content: 1.0.1507
+  content_pack_name: acme-packs-all
+  format: '2'
+  frontend: 1.5.1877
+board:
+  identifier: CustomBoard
+  device: ATmega328PB-AU
+details: null
+application: null
+middlewares: {}
+drivers:
+  CPU:
+    user_label: CPU
+    definition: 'Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::CPU::driver_config_definition::SYSCTRL::Drivers:SYSCTRL:'
+    functionality: System
+    api: 'Drivers:SYSCTRL:'
+    configuration:
+      async_input_speed: 32768
+      clkadc_oscillator: Input clock
+      clkasy_oscillator: Async input clock
+      clkcpu_oscillator: Input clock
+      clkio_oscillator: Input clock
+      clkptc_oscillator: Input clock
+      cpu_clock_source: CLKcpu
+      cpu_sreg_i: true
+      enable_async_input: true
+      enable_clkadc: true
+      enable_clkasy: true
+      enable_clkcpu: true
+      enable_clkio: true
+      enable_clkptc: true
+      enable_core_clock: true
+      enable_input: true
+      input_speed: 8000000
+      pm_ivsel: Interrupt vector placed at the beginning of main FLASH memory
+      pm_pud: true
+      pm_se: false
+      pm_sm: Idle
+      prescaler_divider: '1'
+    optional_signals: []
+    variant: null
+    clocks:
+      domain_group:
+        nodes:
+        - name: Core
+          input: Core
+          external: false
+          external_frequency: 0
+        configuration: {}
+  EXTERNAL_IRQ_0:
+    user_label: EXTERNAL_IRQ_0
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::EXINT::driver_config_definition::EXINT::Drivers:EXINT:Init
+    functionality: External_IRQ
+    api: Drivers:EXINT:Init
+    configuration:
+      exint_isc0: The rising edge of ISC0 generates an interrupt request
+      exint_isc1: The rising edge of ISC1 generates an interrupt request
+      inc_isr_harness: true
+    optional_signals:
+    - identifier: EXTERNAL_IRQ_0:PCINT/18
+      pad: PD2
+      mode: Enabled
+      configuration: null
+      definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::optional_signal_definition::EXINT.PCINT.18
+      name: EXINT/PCINT/18
+      label: PCINT/18
+    - identifier: EXTERNAL_IRQ_0:PCINT/19
+      pad: PD3
+      mode: Enabled
+      configuration: null
+      definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::optional_signal_definition::EXINT.PCINT.19
+      name: EXINT/PCINT/19
+      label: PCINT/19
+    variant: null
+    clocks:
+      domain_group: null
+  ADC_0:
+    user_label: ADC_0
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::ADC::driver_config_definition::ADC.Basic::Drivers:ADC:Basic
+    functionality: ADC
+    api: Drivers:ADC:Basic
+    configuration:
+      adcsra_adate: false
+      adcsra_aden: true
+      adcsra_adie: true
+      adcsra_adps: '128'
+      adcsrb_acme: false
+      adcsrb_adts: Free Running mode
+      admux_adlar: false
+      admux_mux: ADC Single Ended Input pin 0
+      admux_refs: AREF, Internal Vref turned off
+    optional_signals:
+    - identifier: ADC_0:ADC/0
+      pad: PC0
+      mode: Enabled
+      configuration: null
+      definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::optional_signal_definition::ADC.ADC.0
+      name: ADC/ADC/0
+      label: ADC/0
+    variant: null
+    clocks:
+      domain_group:
+        nodes:
+        - name: ADC
+          input: CLKadc
+          external: false
+          external_frequency: 0
+        configuration:
+          adc_clock_source: CLKadc
+  I2C_0:
+    user_label: I2C_0
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::TWI0::driver_config_definition::Interrupt::Drivers:I2C:Master
+    functionality: I2C
+    api: Drivers:I2C:Master
+    configuration:
+      twi_bit_rate: 62500
+      twi_twcr0_twea: true
+      twi_twcr0_twen: true
+      twi_twcr0_twie: true
+    optional_signals:
+    - identifier: I2C_0:SCL
+      pad: PC5
+      mode: Enabled
+      configuration: null
+      definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::optional_signal_definition::TWI0.SCL
+      name: TWI0/SCL
+      label: SCL
+    - identifier: I2C_0:SDA
+      pad: PC4
+      mode: Enabled
+      configuration: null
+      definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::optional_signal_definition::TWI0.SDA
+      name: TWI0/SDA
+      label: SDA
+    variant: null
+    clocks:
+      domain_group: null
+  TIMER_0:
+    user_label: TIMER_0
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::TC1::driver_config_definition::TC16.Mode.12.CTC::Drivers:TC16:Init
+    functionality: Timer
+    api: Drivers:TC16:Init
+    configuration:
+      inc_isr_harness: true
+      tc16_coma: Normal port operation, OCA disconnected
+      tc16_comb: Normal port operation, OCB disconnected
+      tc16_cs: No prescaling
+      tc16_ices: Falling edge will trigger input capture
+      tc16_icie: false
+      tc16_icnc: false
+      tc16_icr: 0
+      tc16_ociea: true
+      tc16_ocieb: false
+      tc16_orca: 8000
+      tc16_orcb: 0
+      tc16_psrasy: false
+      tc16_psrsync: false
+      tc16_toie: false
+      tc16_tsm: false
+    optional_signals: []
+    variant: null
+    clocks:
+      domain_group:
+        nodes:
+        - name: TC16
+          input: CLKio
+          external: false
+          external_frequency: 0
+        configuration:
+          tc16_clock_source: CLKio
+pads:
+  INT2:
+    name: PD3
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::pad::PD3
+    mode: Digital input
+    user_label: INT2
+    configuration: null
+  BAT_SENSE:
+    name: PC0
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::pad::PC0
+    mode: Analog
+    user_label: BAT_SENSE
+    configuration: null
+  PWR_CRTL:
+    name: PC1
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::pad::PC1
+    mode: Digital output
+    user_label: PWR_CRTL
+    configuration:
+      pad_initial_level: High
+  BUTTON:
+    name: PC2
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::pad::PC2
+    mode: Digital input
+    user_label: BUTTON
+    configuration: null
+  SDA:
+    name: PC4
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::pad::PC4
+    mode: Advanced
+    user_label: SDA
+    configuration: null
+  SCL:
+    name: PC5
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::pad::PC5
+    mode: Advanced
+    user_label: SCL
+    configuration: null
+  LED_EN:
+    name: PD0
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::pad::PD0
+    mode: Digital output
+    user_label: LED_EN
+    configuration:
+      pad_initial_level: High
+  STAT_LED:
+    name: PD1
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::pad::PD1
+    mode: Digital output
+    user_label: STAT_LED
+    configuration:
+      pad_initial_level: High
+  INT1:
+    name: PD2
+    definition: Atmel:ATMega328PB_drivers:1.0.0::ATmega328PB-AU::pad::PD2
+    mode: Digital input
+    user_label: INT1
+    configuration: null
+toolchain_options: []
